@@ -56,11 +56,11 @@ The following values are **transcribed from the final evaluation table saved in 
 
 **Observed comparison:** GRU has the lowest recorded RMSE and MAE in this evaluation, while LSTM has the highest recorded directional accuracy. Results depend on the original experimental setup and are **not evidence of validated future-market forecasting performance**.
 
-### Methodology considerations
+### Experimental Limitations
 
-The original notebook applies `StandardScaler` **before** the chronological train/test split, which can leak test-period statistics into training. Its sequence-building function selects the closing price at the **end of the input window** as the label rather than the close at a subsequent time step. Thus the reported final-table scores should be interpreted as results of the original exploratory setup, **not as leakage-free next-day forecasts**. The Random Walk experiment also uses a stochastic simulated trajectory rather than a standard persistence baseline. These behaviors are documented rather than silently changing the notebook and its saved results.
+The experiments use the original academic implementation and its recorded evaluation results. Preprocessing was performed before the chronological train/test split, introducing potential data leakage, while prediction targets were aligned with the input window rather than a future trading day.
 
-A more rigorous forecasting experiment would fit preprocessing on training data only, use strictly future-aligned targets, compare against a last-observation persistence forecast, and rerun the full evaluation. That would be a separate methodology revision.
+Consequently, the reported metrics reflect the original comparative experiments rather than validated out-of-sample forecasting performance. The notebook and its recorded results have been preserved for research reproducibility.
 
 ## Repository Structure
 
